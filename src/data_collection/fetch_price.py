@@ -5,6 +5,10 @@ import yfinance as yf
 import pandas as pd
 from pathlib import Path
 
+# Project root (works on Render and locally)
+_ROOT = Path(__file__).resolve().parent.parent.parent
+RAW_PRICE_DIR = _ROOT / "data" / "raw" / "price"
+
 # yfinance uses different symbols for some assets; we still save as {ticker}.csv for the pipeline
 YF_SYMBOL_ALIASES = {
     "XAU-USD": "GC=F",   # Gold: use gold futures
@@ -31,9 +35,6 @@ FOREX_YF_SYMBOLS = {
     "USD-MXN": "MXN=X",  "USDMXN": "MXN=X", "USD/MXN": "MXN=X",
     "USD-INR": "INR=X",  "USDINR": "INR=X", "USD/INR": "INR=X",
 }
-
-RAW_PRICE_DIR = Path(r"C:\Users\SHREEL\PycharmProjects\FINAI\data\raw\price")
-
 
 def _normalize_forex_ticker(ticker: str) -> str | None:
     """Return Yahoo forex symbol if ticker looks like a forex pair, else None."""

@@ -1,12 +1,23 @@
-# Core (existing)
+# Core API
 fastapi
 uvicorn
 pandas
 numpy
+pydantic
+
+# ML / prediction
 scikit-learn
 xgboost
-pydantic
-yfinance
 
-# Phase 2: LLM agent with tool calling (optional; chat falls back to intent flow if not installed)
+# Data & HTTP
+yfinance
+requests
+
+# Sentiment (pipeline)
+tqdm
+nltk
+torch
+transformers
+
+# Phase 2: LLM agent (optional; chat falls back to intent flow if not installed)
 ollama>=0.3.0

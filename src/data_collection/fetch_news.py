@@ -10,7 +10,8 @@ import requests
 
 from src.utils.ticker_aliases import get_ticker_aliases
 
-DATA_PATH = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\news")
+_ROOT = Path(__file__).resolve().parent.parent.parent
+DATA_PATH = _ROOT / "data" / "news"
 
 # RSS feeds for Bloomberg, Reuters, and FXStreet. Items are filtered by ticker/aliases.
 BLOOMBERG_RSS = "https://feeds.bloomberg.com/markets/news.rss"

@@ -4,9 +4,14 @@ from datetime import datetime
 import time
 import re
 import os
+from pathlib import Path
 from urllib.parse import quote_plus
 
 from src.utils.ticker_aliases import get_ticker_aliases
+
+_ROOT = Path(__file__).resolve().parent.parent.parent
+DATA_REDDIT = _ROOT / "data" / "reddit"
+DATA_RAW_REDDIT = _ROOT / "data" / "raw" / "reddit"
 
 
 def fetch_reddit_for_ticker(ticker="MSFT"):
@@ -132,7 +137,7 @@ def fetch_reddit_for_ticker(ticker="MSFT"):
         df = df.sort_values('created', ascending=False)
 
         # Create directory if it doesn't exist
-        save_path = r'C:\Users\SHREEL\PycharmProjects\FINAI\data\reddit'
+        save_path = str(DATA_REDDIT)
         os.makedirs(save_path, exist_ok=True)
 
         # Save as Parquet file
@@ -240,7 +245,7 @@ def fetch_ticker_mentions(ticker="MSFT", days_back=30, min_score=5):
                 df = df.sort_values('score', ascending=False)
 
                 # Save to Parquet
-                save_path = r'C:\Users\SHREEL\PycharmProjects\FINAI\data\raw\reddit'
+                save_path = str(DATA_RAW_REDDIT)
                 os.makedirs(save_path, exist_ok=True)
 
                 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -278,7 +283,7 @@ if __name__ == "__main__":
     print("=" * 60)
 
     # Create save directory
-    save_dir = r'C:\Users\SHREEL\PycharmProjects\FINAI\data\reddit'
+    save_dir = str(DATA_REDDIT)
     os.makedirs(save_dir, exist_ok=True)
     print(f"📁 Save directory: {save_dir}")
 

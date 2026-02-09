@@ -10,7 +10,9 @@ from src.sentiment.finbert_news import score_news
 
 from data.features.build_dataset import build_dataset
 
-DATA_FINAL = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\final")
+# Project root (works on Render and locally)
+_ROOT = Path(__file__).resolve().parent.parent.parent
+DATA_FINAL = _ROOT / "data" / "final"
 
 # Daily data: last 6 months
 DAILY_START_DAYS = 183

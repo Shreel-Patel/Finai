@@ -1,8 +1,10 @@
 import pandas as pd
+from pathlib import Path
 from src.agent.agent import run_agent
 
+_root = Path(__file__).resolve().parent.parent.parent
 # Load final dataset
-df = pd.read_csv("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\final\\AAPL.csv")
+df = pd.read_csv(_root / "data" / "final" / "AAPL.csv")
 
 # Pick the latest valid row
 row = df.dropna().iloc[-1]

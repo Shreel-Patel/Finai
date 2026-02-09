@@ -2,8 +2,10 @@ import pandas as pd
 from pathlib import Path
 from typing import Optional
 
-NEWS_PATH = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\processed\\news")
-REDDIT_PATH = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\reddit")
+# Project root (works on Render and locally)
+_ROOT = Path(__file__).resolve().parent.parent.parent
+NEWS_PATH = _ROOT / "data" / "processed" / "news"
+REDDIT_PATH = _ROOT / "data" / "reddit"
 
 
 def _sentiment_label(pos: float, neg: float) -> str:

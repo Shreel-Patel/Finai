@@ -12,6 +12,9 @@ logger = logging.getLogger(__name__)
 
 MODEL = "yiyanghkust/finbert-tone"
 
+# Project root (works on Render and locally)
+_ROOT = Path(__file__).resolve().parent.parent.parent
+
 
 def score_news(ticker="MSFT", batch_size=32, device=None):
     """
@@ -22,9 +25,8 @@ def score_news(ticker="MSFT", batch_size=32, device=None):
         batch_size: Batch size for inference
         device: 'cuda' or 'cpu', auto-detects if None
     """
-    # Paths
-    DATA_PATH = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\news")
-    OUT_PATH = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\processed\\news")
+    DATA_PATH = _ROOT / "data" / "news"
+    OUT_PATH = _ROOT / "data" / "processed" / "news"
 
     # Load data
     input_path = DATA_PATH / f"{ticker}.csv"

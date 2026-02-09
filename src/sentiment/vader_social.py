@@ -123,10 +123,11 @@ class SocialSentimentAnalyzer:
             output_dir: Directory for processed data
         """
         # Setup paths
+        _root = Path(__file__).resolve().parent.parent.parent
         if data_dir is None:
-            data_dir = Path(f"C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\{source}")
+            data_dir = _root / "data" / source
         if output_dir is None:
-            output_dir = Path(f"C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\processed\\{source}")
+            output_dir = _root / "data" / "processed" / source
 
         # Validate source
         if source not in self.SOURCES:

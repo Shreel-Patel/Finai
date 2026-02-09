@@ -59,11 +59,11 @@ class DailySentimentAggregator:
             DataFrame with daily sentiment metrics
         """
         # Setup paths
+        _root = Path(__file__).resolve().parent.parent.parent
         if data_dir is None:
-            data_dir = Path(f"C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\processed\\{source}")
-
+            data_dir = _root / "data" / "processed" / source
         if output_dir is None:
-            output_dir = Path("C:\\Users\\SHREEL\\PycharmProjects\\FINAI\\data\\features\\sentiment")
+            output_dir = _root / "data" / "features" / "sentiment"
 
         # Load data
         input_path = data_dir / f"{ticker}.csv"
