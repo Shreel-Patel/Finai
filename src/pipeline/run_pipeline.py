@@ -8,7 +8,7 @@ from src.sentiment.aggregate import aggregate_multiple_sources
 from src.sentiment.vader_social import score_multiple_sources
 from src.sentiment.finbert_news import score_news
 
-from data.features.build_dataset import build_dataset
+from src.pipeline.build_dataset import build_dataset
 
 # Project root (works on Render and locally)
 _ROOT = Path(__file__).resolve().parent.parent.parent
