@@ -1,16 +1,19 @@
 """
 Run backtest with unified predictor (technicals + Reddit + news).
+For the web API, use: uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 """
+from pathlib import Path
 import pandas as pd
 from src.models.backtest import walk_forward_backtest
 from src.models.metrics import evaluate, evaluate_strategy, sweep_threshold
 from src.models.config import get_features_for_df
 from src.models.predictor import get_backtest_model_fn
 
-DATA_PATH = r"C:\Users\SHREEL\PycharmProjects\FINAI\data\final"
+_ROOT = Path(__file__).resolve().parent
+DATA_PATH = _ROOT / "data" / "final"
 TICKER = "MSFT"
 
-df = pd.read_csv(f"{DATA_PATH}/{TICKER}.csv").dropna()
+df = pd.read_csv(DATA_PATH / f"{TICKER}.csv").dropna()
 if "target" not in df.columns:
     df["target"] = (df["Close"].shift(-1) > df["Close"]).astype(int)
 if "target_return" not in df.columns:

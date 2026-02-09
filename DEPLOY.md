@@ -35,8 +35,8 @@ Deploy the **backend (FINAI)** and **frontend (aura-finance)** on free tiers. Fr
 
 1. Push the **FINAI** project (this repo) to GitHub.
 2. Go to [render.com](https://render.com) → Sign in with GitHub → **New** → **Web Service**.
-3. Connect the FINAI repo.
-4. **Settings:**
+3. Connect the FINAI repo. If the repo has a `render.yaml`, Render may auto-fill build/start commands; otherwise set them manually.
+4. **Settings (required for “Port scan timeout” fix):**
    - **Name:** e.g. `finai-api`
    - **Region:** choose closest to you.
    - **Runtime:** Python 3.
@@ -44,11 +44,13 @@ Deploy the **backend (FINAI)** and **frontend (aura-finance)** on free tiers. Fr
      ```bash
      pip install -r requirements.txt
      ```
-   - **Start command:**
+   - **Start command (must be exactly this so the app binds to Render’s PORT):**
      ```bash
      uvicorn src.api.main:app --host 0.0.0.0 --port $PORT
      ```
    - **Instance type:** Free.
+
+**If you see “Port scan timeout” or “no open ports detected”:** the Start command was wrong or missing. Do **not** use `python main.py` (that runs a backtest script and exits). Use the `uvicorn` command above so the FastAPI app listens on `$PORT`.
 
 5. **Environment variables** (optional but useful):
    - `FINAI_CHAT_MODEL` = `gemma:2b` (or leave default; Ollama won’t run on Render, so chat uses intent fallback).

@@ -1,0 +1,8 @@
+# Render web service for FINAI API
+# See: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: finai-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.api.main:app --host 0.0.0.0 --port $PORT
