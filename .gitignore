@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Data (large CSVs; keep structure if needed)
+data/raw/
+data/reddit/
+data/processed/
+data/features/
+data/final/
+data/news/
+*.csv
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files (secrets)
+.env
+.env.local

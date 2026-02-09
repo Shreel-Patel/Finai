@@ -1,0 +1,11 @@
+# Core (existing)
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+xgboost
+pydantic
+
+# Phase 2: LLM agent with tool calling (optional; chat falls back to intent flow if not installed)
+ollama>=0.3.0
