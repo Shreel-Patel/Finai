@@ -6,6 +6,7 @@ numpy
 scikit-learn
 xgboost
 pydantic
+yfinance
 
 # Phase 2: LLM agent with tool calling (optional; chat falls back to intent flow if not installed)
 ollama>=0.3.0
